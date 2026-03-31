@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">ImcCalc</string>
+    <string name="male">Homen</string>
+    <string name="female">Mulher</string>
+    <string name="height">Altura</string>
+    <string name="heightUser">0</string>
+    <string name="weight">Peso</string>
+    <string name="weightUser">0</string>
+    <string name="kg">Kg</string>
+    <string name="age">Idade</string>
+    <string name="ageUser">0</string>
+    <string name="year">Anos</string>
+    <string name="btnCalc">Calcular</string>
+    <string name="plus">+</string>
+    <string name="less">-</string>
+    <string name="plusWeightDescripition">Aumentar peso</string>
+    <string name="lessWeightDescripition">Diminuir peso</string>
+    <string name="plusAgeDescripition">Aumentar idade</string>
+    <string name="lessAgeDescripition">Diminuir idade</string>
 </resources>
