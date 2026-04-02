@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <path
-        android:fillColor="#7F00FF"
+        android:fillColor="@color/primary"
         android:pathData="M0,0h108v108h-108z"/>
 
     <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
@@ -62,7 +62,7 @@
             android:pathData="M24,60h60a6,6 0 0 1 6,6v12a6,6 0 0 1 -6,6h-60a6,6 0 0 1 -6,-6v-12a6,6 0 0 1 6,-6z"/>
 
         <path
-            android:fillColor="#7F00FF"
+            android:fillColor="@color/primary"
             android:pathData="M34,66a20,20 0 0 1 40,0h-6a14,14 0 0 0 -28,0z"/>
 
         <path
