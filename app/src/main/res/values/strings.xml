@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ImcCalc</string>
+    <string name="app_name">IMC Calc</string>
     <string name="male">Homen</string>
     <string name="female">Mulher</string>
     <string name="height">Altura</string>
@@ -17,4 +17,5 @@
     <string name="lessWeightDescripition">Diminuir peso</string>
     <string name="plusAgeDescripition">Aumentar idade</string>
     <string name="lessAgeDescripition">Diminuir idade</string>
+    <string name="bmi">IMC</string>
 </resources>

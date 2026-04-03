@@ -2,8 +2,9 @@ package nyz.imccalc
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.SeekBar
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -25,83 +26,97 @@ class MainActivity : AppCompatActivity() {
         val buttonMale = findViewById<Button>(R.id.buttonMale)
         val buttonFemale = findViewById<Button>(R.id.buttonFemale)
 
-        var genderChoice = "" // Gender
+        //var genderChoice = "" // Gender
 
         // Height
-        val heightUserValue = findViewById<SeekBar>(R.id.heightUserValue) // Height seekBar
-        val textViewHeightValue = findViewById<TextView>(R.id.textViewHeightValue) // Height textView
-        var valueHeight = 0 // Height Value
+        val editTextHeight = findViewById<EditText>(R.id.editTextHeight) // Height editText
+        var valueHeight = 0.0 // Height Value
 
         // Weight
         val buttonLessWeight = findViewById<Button>(R.id.buttonLessWeight) // Weight button less
         val buttonPlusWeight = findViewById<Button>(R.id.buttonPlusWeight) // Weight button plus
-        val textViewWeight = findViewById<TextView>(R.id.textViewWeight) // Weight textView
-        var valueWeight = 0 // Weight value
+        val editTextWeight = findViewById<EditText>(R.id.editTextWeight) // Weight editText
+        var valueWeight = 0.0 // Weight value
 
         //Age
         val buttonLessAge = findViewById<Button>(R.id.buttonLessAge) // Age button less
         val buttonPlusAge = findViewById<Button>(R.id.buttonPlusAge) // Age button plus
-        val textViewAge = findViewById<TextView>(R.id.textViewAge) // Age textView
-        var valueAge = 0 // Age value
+        val editTextAge = findViewById<EditText>(R.id.editTextAge) // Age editText
+        //var valueAge = 0 // Age value
+
+        // Values initial
+        editTextWeight.setText(valueWeight.toString())
+        editTextHeight.setText(valueHeight.toString())
+
+        // BMI calc
+        findViewById<Button>(R.id.buttonCalc).setOnClickListener {
+            valueHeight = editTextHeight.text.toString().toDouble()
+            valueWeight = editTextWeight.text.toString().toDouble()
+
+            if(valueHeight <= 0.0 || valueWeight <= 1.5) {
+                Toast.makeText(this, "Valores invalidos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val bmi = valueWeight / (valueHeight * valueHeight)
+            findViewById<TextView>(R.id.resultTextView).text = bmi.toInt().toString()
+        }
 
         buttonLessAge.setOnClickListener {
-            if(valueAge != 0) {
-                valueAge -= 1
-                textViewAge.text = valueAge.toString()
+            val currentValue = editTextAge.text.toString().toIntOrNull() ?: 0
+
+            if(currentValue > 0) {
+                val newValue = currentValue - 1
+                editTextAge.setText(newValue.toString())
             }
         }
 
         buttonPlusAge.setOnClickListener {
-            valueAge += 1
-            if(valueAge > 122) {
-                valueAge = 122
+            val currentValue = editTextAge.text.toString().toIntOrNull() ?: 0
+
+            if(currentValue < 122) {
+                val newValue = currentValue + 1
+                editTextAge.setText(newValue.toString())
             }
-            textViewAge.text = valueAge.toString()
         }
 
 
         buttonLessWeight.setOnClickListener {
-            if(valueWeight != 0) {
-                valueWeight -= 1
-                textViewWeight.text = valueWeight.toString()
+            val currentValue = editTextWeight.text.toString().toDoubleOrNull() ?: 0.0
+
+            if (currentValue > 0) {
+                val newValue = currentValue - 1
+                valueWeight = newValue
+                editTextWeight.setText(newValue.toString())
             }
         }
 
         buttonPlusWeight.setOnClickListener {
-            valueWeight += 1
-            if(valueWeight > 635) {
-                valueWeight = 635
+            val currentValue = editTextWeight.text.toString().toDoubleOrNull() ?: 0.0
+
+            if (currentValue < 635) {
+                val newValue = currentValue + 1
+                valueWeight = newValue
+                editTextWeight.setText(newValue.toString())
             }
-            textViewWeight.text = valueWeight.toString()
         }
 
-
-        heightUserValue.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                textViewHeightValue.text = progress.toString()
-                valueHeight = progress
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-            }
-        })
-
+        // Gender choice male
         buttonMale.setOnClickListener {
             buttonMale.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary)
             buttonFemale.backgroundTintList = ContextCompat.getColorStateList(this, R.color.secondary)
-            genderChoice = "male"
-            findViewById<TextView>(R.id.resultTextView).text = genderChoice
+            buttonMale.setTextColor(ContextCompat.getColorStateList(this, R.color.white))
+            buttonFemale.setTextColor(ContextCompat.getColorStateList(this, R.color.black))
+            //genderChoice = "male"
         }
 
+        // Gender choice female
         buttonFemale.setOnClickListener {
             buttonFemale.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary)
             buttonMale.backgroundTintList = ContextCompat.getColorStateList(this, R.color.secondary)
-            genderChoice = valueHeight.toString()
-            findViewById<TextView>(R.id.resultTextView).text = genderChoice
+            buttonMale.setTextColor(ContextCompat.getColorStateList(this, R.color.black))
+            buttonFemale.setTextColor(ContextCompat.getColorStateList(this, R.color.white))
+            //genderChoice = "female"
         }
-
     }
 }

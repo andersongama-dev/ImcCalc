@@ -31,7 +31,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="16dp"
                 android:text="@string/app_name"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="30sp" />
 
         </LinearLayout>
@@ -50,7 +50,7 @@
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="#807F00FF"
+                android:backgroundTint="@color/primary"
                 android:gravity="center"
                 android:text="@string/male"
                 android:textColor="@color/white"
@@ -66,7 +66,7 @@
                 android:backgroundTint="@color/secondary"
                 android:gravity="center"
                 android:text="@string/female"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:cornerRadius="8dp" />
 
@@ -76,8 +76,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:orientation="vertical"
             android:background="@drawable/card_background"
+            android:orientation="vertical"
             android:padding="16dp">
 
             <TextView
@@ -85,25 +85,23 @@
                 android:layout_height="wrap_content"
                 android:text="@string/height"
                 android:textAlignment="textStart"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textViewHeightValue"
+            <EditText
+                android:id="@+id/editTextHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/heightUser"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/heightUser"
+                android:inputType="numberDecimal"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
-            <SeekBar
-                android:id="@+id/heightUserValue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:max="273" />
         </LinearLayout>
 
         <GridLayout
@@ -122,14 +120,15 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/card_background"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="8dp">
 
                 <TextView
+                    android:id="@+id/labelWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/weight"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -142,7 +141,7 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/buttonLessWeight"
                         style="@style/Widget.MaterialComponents.Button"
-                        android:layout_width="38dp"
+                        android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:textAlignment="center"
                         android:contentDescription="@string/lessWeightDescripition"
@@ -152,21 +151,24 @@
                         app:backgroundTint="@color/primary"
                         app:cornerRadius="12dp" />
 
-                    <TextView
-                        android:id="@+id/textViewWeight"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/editTextWeight"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:text="@string/weightUser"
+                        android:layout_weight="1"
+                        android:autofillHints="weight"
+                        android:ems="10"
+                        android:hint="@string/weightUser"
+                        android:inputType="numberDecimal"
+                        android:labelFor="@id/labelWeight"
                         android:textAlignment="center"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/buttonPlusWeight"
                         style="@style/Widget.MaterialComponents.Button"
-                        android:layout_width="38dp"
+                        android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:textAlignment="center"
                         android:contentDescription="@string/plusWeightDescripition"
@@ -183,7 +185,7 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/kg"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -194,14 +196,14 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/card_background"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="8dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/age"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -214,7 +216,7 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/buttonLessAge"
                         style="@style/Widget.MaterialComponents.Button"
-                        android:layout_width="38dp"
+                        android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:contentDescription="@string/lessAgeDescripition"
                         android:text="@string/less"
@@ -224,21 +226,24 @@
                         app:backgroundTint="@color/primary"
                         app:cornerRadius="12dp" />
 
-                    <TextView
-                        android:id="@+id/textViewAge"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/editTextAge"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:text="@string/ageUser"
+                        android:layout_weight="1"
+                        android:autofillHints="weight"
+                        android:ems="10"
+                        android:hint="@string/weightUser"
+                        android:inputType="numberDecimal"
+                        android:labelFor="@id/labelWeight"
                         android:textAlignment="center"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/buttonPlusAge"
                         style="@style/Widget.MaterialComponents.Button"
-                        android:layout_width="38dp"
+                        android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:contentDescription="@string/plusAgeDescripition"
                         android:text="@string/plus"
@@ -255,7 +260,7 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/year"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
             </LinearLayout>
         </GridLayout>
@@ -267,6 +272,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonCalc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primary"
@@ -284,9 +290,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/age"
+            android:text="@string/bmi"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
