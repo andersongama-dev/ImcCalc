@@ -3,7 +3,7 @@
     <string name="male">Homen</string>
     <string name="female">Mulher</string>
     <string name="height">Altura</string>
-    <string name="heightUser">0</string>
+    <string name="heightUser">0.0 cm</string>
     <string name="weight">Peso</string>
     <string name="weightUser">0</string>
     <string name="kg">Kg</string>
@@ -18,4 +18,11 @@
     <string name="plusAgeDescripition">Aumentar idade</string>
     <string name="lessAgeDescripition">Diminuir idade</string>
     <string name="bmi">IMC</string>
+    <string name="btnReturn">Voltar</string>
+    <string name="result">Resultado</string>
+    <string name="optimalRange">Faixa de peso ideal</string>
+    <string name="bmiClassification">Classificação</string>
+    <string name="optimalRangeInitial">00.0 Kg</string>
+    <string name="weightToGain">Peso a ganhar</string>
+    <string name="weightToLose">Peso a perder</string>
 </resources>

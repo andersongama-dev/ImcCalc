@@ -1,9 +1,9 @@
 package nyz.imccalc
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -49,21 +49,29 @@ class MainActivity : AppCompatActivity() {
         val buttonPlusAge = findViewById<Button>(R.id.buttonPlusAge) // Age button plus
         val editTextAge = findViewById<EditText>(R.id.editTextAge) // Age editText
 
-        // Result
-        val resultTextView = findViewById<TextView>(R.id.resultTextView)
-
         // BMI calc
-        findViewById<Button>(R.id.buttonCalc).setOnClickListener {
+        findViewById<Button>(R.id.buttonReturn).setOnClickListener {
             val valueHeight = editTextHeight.text.toString().toDoubleOrNull() ?: 0.0
             val valueWeight = editTextWeight.text.toString().toDoubleOrNull() ?: 0.0
 
-            if(valueHeight <= 0.0 || valueWeight <= 1.5) {
+            if (valueHeight <= 0.0 || valueWeight <= 1.5) {
                 Toast.makeText(this, "Valores inválidos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val bmi = calculateBmi.calculate(valueWeight, valueHeight)
-            resultTextView.text = bmi.toInt().toString()
+
+            val intent = Intent(this, DetailsActivity::class.java)
+
+            val minWeight = 18.5 * (valueHeight * valueHeight)
+            val maxWeight = 24.9 * (valueHeight * valueHeight)
+
+            intent.putExtra("WEIGHT", valueWeight)
+            intent.putExtra("EXTRA_BMI", bmi)
+            intent.putExtra("WEIGHT_MIN", minWeight)
+            intent.putExtra("WEIGHT_MAX", maxWeight)
+
+            startActivity(intent)
         }
         setupIncrementButtons.setupIncrementButtonsInt(
             buttonLessAge,
