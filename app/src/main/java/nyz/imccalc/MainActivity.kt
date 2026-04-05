@@ -7,9 +7,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import nyz.imccalc.utils.UpdateGenderUI
-import nyz.imccalc.utils.SetupIncrementButtons
-import nyz.imccalc.calculations.Bmi
+import nyz.imccalc.util.UpdateGenderUI
+import nyz.imccalc.util.SetupIncrementButtons
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -17,8 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     private val setupGender = UpdateGenderUI(this)
     private val setupIncrementButtons = SetupIncrementButtons()
-
-    private val calculateBmi = Bmi()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         // Gender
         val buttonMale = findViewById<Button>(R.id.buttonMale)
         val buttonFemale = findViewById<Button>(R.id.buttonFemale)
-
         //var genderChoice = "" // Gender
 
         // Height
@@ -53,13 +49,12 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonReturn).setOnClickListener {
             val valueHeight = editTextHeight.text.toString().toDoubleOrNull() ?: 0.0
             val valueWeight = editTextWeight.text.toString().toDoubleOrNull() ?: 0.0
+            val valueAge = editTextAge.text.toString().toIntOrNull() ?: 0
 
             if (valueHeight <= 0.0 || valueWeight <= 1.5) {
                 Toast.makeText(this, "Valores inválidos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            val bmi = calculateBmi.calculate(valueWeight, valueHeight)
 
             val intent = Intent(this, DetailsActivity::class.java)
 
@@ -67,9 +62,8 @@ class MainActivity : AppCompatActivity() {
             val maxWeight = 24.9 * (valueHeight * valueHeight)
 
             intent.putExtra("WEIGHT", valueWeight)
-            intent.putExtra("EXTRA_BMI", bmi)
-            intent.putExtra("WEIGHT_MIN", minWeight)
-            intent.putExtra("WEIGHT_MAX", maxWeight)
+            intent.putExtra("HEIGHT", valueHeight)
+            intent.putExtra("AGE", valueAge)
 
             startActivity(intent)
         }

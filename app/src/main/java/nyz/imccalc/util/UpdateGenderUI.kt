@@ -1,4 +1,4 @@
-package nyz.imccalc.utils
+package nyz.imccalc.util
 
 import android.content.Context
 import android.widget.Button

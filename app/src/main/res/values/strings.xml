@@ -25,4 +25,10 @@
     <string name="optimalRangeInitial">00.0 Kg</string>
     <string name="weightToGain">Peso a ganhar</string>
     <string name="weightToLose">Peso a perder</string>
+    <string name="underWeight">Abaixo do peso</string>
+    <string name="normalWeight">Peso normal</string>
+    <string name="overWeight">Sobrepeso</string>
+    <string name="obesityOne">Obesidade I</string>
+    <string name="obesityTwo">Obesidade II</string>
+    <string name="obesityThree">Obesidade III</string>
 </resources>
