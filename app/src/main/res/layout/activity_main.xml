@@ -152,7 +152,8 @@
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:backgroundTint="@color/primary"
-                        app:cornerRadius="12dp" />
+                        app:cornerRadius="12dp"
+                        />
 
                     <EditText
                         android:id="@+id/editTextWeight"
@@ -203,6 +204,7 @@
                 android:padding="8dp">
 
                 <TextView
+                    android:id="@+id/labelAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/age"
@@ -237,9 +239,9 @@
                         android:layout_weight="1"
                         android:autofillHints="weight"
                         android:ems="10"
-                        android:hint="@string/weightUser"
+                        android:hint="@string/ageUser"
                         android:inputType="numberDecimal"
-                        android:labelFor="@id/labelWeight"
+                        android:labelFor="@id/labelAge"
                         android:textAlignment="center"
                         android:textColor="?attr/android:textColor"
                         android:textColorHint="?attr/android:textColor"
@@ -277,7 +279,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonCalc"
+                android:id="@+id/buttonReturn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primary"
@@ -289,15 +291,6 @@
                 android:textSize="16sp"
                 app:cornerRadius="8dp" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/resultTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/bmi"
-            android:textAlignment="center"
-            android:textColor="?attr/android:textColor" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
