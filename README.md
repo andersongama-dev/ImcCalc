@@ -80,8 +80,6 @@ Peso médio  = (mínimo + máximo) / 2
 * Android SDK
 * XML (Layouts)
 * ViewBinding
-* (Opcional) MVVM Architecture
-* (Opcional) LiveData / StateFlow
 
 ---
 
